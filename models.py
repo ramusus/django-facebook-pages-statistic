@@ -4,14 +4,12 @@ from django.utils import timezone
 from fbparse import likes_shares_parse
 
 
-#class FBpageManager(models.Manager):
-#
-#    def create(self, page):
-#        print "create"
-#        fbpage = self.model(page=page, **kwargs)
-#        fbpage.update()
-#        fbpage.save()
-#        return fbpage
+class FBpageManager(models.Manager):
+
+    def get_with_update(self, *args, **kwargs):
+        fbpage = self.get(*args, **kwargs)
+        fbpage.save() # calls likes & shares update
+        return fbpage
 
 
 class FBpage(models.Model):
@@ -20,7 +18,10 @@ class FBpage(models.Model):
     shares = models.PositiveIntegerField(default=0, editable=False)
     last_update = models.DateTimeField("Last update time", editable=False) # default=timezone.now()
 
-    #objects = FBpageManager()
+    objects = FBpageManager()
+
+    def __unicode__(self):
+        return self.page
 
     class Meta:
         verbose_name = "FaceBook page"
