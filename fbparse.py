@@ -6,7 +6,7 @@
 import re
 import requests
 
-example = \
+#example = \
 '''
 <script>...
 "require":[["PagesLikesTab","renderLikesData",["m_0_6"],[{"__m":"m_0_6"},1412578800,[38899,36849,42248,49295,50444,43025,39831,39251,29268,29336,31095,33199,0,0],89149451]],
@@ -23,29 +23,20 @@ headers = {"Accept-Language": "en-US"}
 def likes_shares_parse(page):
     url = HOST + page + '/likes'
     r = requests.get(url, headers=headers)
-
     if not r.status_code == 200:
         raise Exception("Page not found")
 
     html = r.content
-    #print html
-    #exit()
-
     arr = likes_re.findall(html)
-    #print arr
-
     if not len(arr) == 2:
         raise Exception("Parse error, or no likes on the page")
-
-    #likes = arr[0]
-    #talking_about = arr[1]
 
     return {"likes": arr[0], "shares": arr[1]}
 
 
+
 if __name__ == "__main__":
     print likes_shares_parse('samsung')
-
 
 
 

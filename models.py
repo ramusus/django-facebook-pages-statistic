@@ -18,7 +18,7 @@ class FBpage(models.Model):
     page = models.CharField("Page", max_length=64)
     likes = models.PositiveIntegerField(default=0, editable=False)
     shares = models.PositiveIntegerField(default=0, editable=False)
-    last_update = models.DateTimeField("Last update time", editable=False,) # default=timezone.now()
+    last_update = models.DateTimeField("Last update time", editable=False) # default=timezone.now()
 
     #objects = FBpageManager()
 
