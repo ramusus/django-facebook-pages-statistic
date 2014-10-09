@@ -35,8 +35,8 @@ def likes_shares_parse(page):
 
 
 
-if __name__ == "__main__":
-    print likes_shares_parse('samsung')
+#if __name__ == "__main__":
+#    print likes_shares_parse('samsung')
 
 
 

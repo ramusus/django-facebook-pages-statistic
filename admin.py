@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from fb_parse.models import FBpage
+from fb_parse.models import PageStatistic
 
 
-class FBpageAdmin(admin.ModelAdmin):
+class PageStatisticAdmin(admin.ModelAdmin):
     search_fields = ("page",)
     list_display = ("page", "likes", "shares", "last_update",)
 
 
-admin.site.register(FBpage, FBpageAdmin)
+admin.site.register(PageStatistic, PageStatisticAdmin)
