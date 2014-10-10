@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-facebook-pages-statistic',
-    version=__import__('facebook-pages-statistic').__version__,
+    version=__import__('facebook_pages_statistic').__version__,
     description='Extends Django django-facebook-pages app with statistic',
     long_description=open('README.md').read(),
     author='krupin.dv',
