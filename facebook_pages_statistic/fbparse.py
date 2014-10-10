@@ -31,12 +31,7 @@ def likes_shares_parse(page):
     if not len(arr) == 2:
         raise Exception("Parse error, or no likes on the page")
 
+    arr = map(int, arr)
     return {"likes": arr[0], "shares": arr[1]}
-
-
-
-#if __name__ == "__main__":
-#    print likes_shares_parse('samsung')
-
 
 

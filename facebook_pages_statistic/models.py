@@ -27,8 +27,10 @@ class Page(Page):
 
     @property
     def last_stats(self):
-        return self.pagestatistic_set.latest()
+        if not hasattr(self, "_last_stats"):
+            self._last_stats = self.pagestatistic_set.latest()
 
+        return self._last_stats
 
     class Meta(Page.Meta):
         proxy = True
@@ -50,7 +52,7 @@ class PageStatistic(models.Model):
 
     likes = models.PositiveIntegerField(default=0, editable=False)
     shares = models.PositiveIntegerField(default=0, editable=False)
-    last_update = models.DateTimeField("Last update time", editable=False, auto_now_add=True)
+    parse_date = models.DateTimeField(auto_now_add=True, editable=False)
 
     #objects = PageStatisticManager()
 
@@ -60,7 +62,7 @@ class PageStatistic(models.Model):
     class Meta:
         verbose_name = "PageStatistic"
         verbose_name_plural = "PageStatistic"
-        get_latest_by = 'last_update'
+        get_latest_by = 'parse_date'
 
     def save(self, *args, **kwargs):
         page = self.page.name

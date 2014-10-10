@@ -16,7 +16,7 @@ Add into `settings.py` lines:
         'oauth_tokens',
         'facebook_api',
         'facebook_pages',
-        'facebook-pages-statistic',
+        'facebook_pages_statistic',
     )
 
 
@@ -26,7 +26,7 @@ Add into `settings.py` lines:
 
     supose what we already have page with name 'cocacola'
 
-    >>> from fb_parse.models import Page
+    >>> from facebook_pages_statistic.models import Page
     >>> p = Page.objects.get_with_updated_stats(name='cocacola')
     >>> p.last_stats.likes
     89131588
