@@ -5,7 +5,7 @@ from .models import PageStatistic
 
 class PageStatisticAdmin(admin.ModelAdmin):
     search_fields = ("page",)
-    list_display = ("page", "likes", "shares", "parse_date",)
+    list_display = ("page", "likes", "talking_about_count", "updated_at",)
 
 
 admin.site.register(PageStatistic, PageStatisticAdmin)
