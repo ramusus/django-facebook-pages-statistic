@@ -8,7 +8,7 @@ class PageStatistic(models.Model):
 
     page = models.ForeignKey(Page)
 
-    likes = models.PositiveIntegerField(default=0, editable=False)
+    likes_count = models.PositiveIntegerField(default=0, editable=False)
     talking_about_count = models.PositiveIntegerField(default=0, editable=False)
     updated_at = models.DateTimeField(auto_now_add=True, editable=False)
 
@@ -16,7 +16,7 @@ class PageStatistic(models.Model):
     class Meta:
         verbose_name = "PageStatistic"
         verbose_name_plural = "PageStatistic"
-        #get_latest_by = 'updated_at'
+        get_latest_by = 'id'
 
 
 

@@ -21,15 +21,19 @@ Add into `settings.py` lines:
 
 
 ## Usage examples
-    First create page
-    see https://github.com/ramusus/django-facebook-pages
+    After Page (https://github.com/ramusus/django-facebook-pages) created or updated
+    page = Page.remote.fetch('19292868552')
 
-    supose what we already have page with name 'cocacola'
+    PageStatistic object will be created
+    which store likes_count, talking_about_count
+    and update time
 
-    >>> from facebook_pages_statistic.models import Page
-    >>> p = Page.objects.get_with_updated_stats(name='cocacola')
-    >>> p.last_stats.likes
-    89131588
-    >>> p.last_stats.shares
-    927945
+    ps = PageStatistic.objects.filter(page=page).latest()
+
+    ps.likes_count
+    >>>10
+    ps.talking_about_count
+    >>>20
+    ps.updated_at
+    >>>datetime.datetime(2014, 10, 28, 15, 12, 16, 128099, tzinfo=<UTC>)
 

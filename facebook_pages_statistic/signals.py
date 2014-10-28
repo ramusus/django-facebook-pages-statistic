@@ -8,5 +8,11 @@ from . models import PageStatistic
 
 @receiver(post_save, sender=Page)
 def page_statistic_create(sender, instance, **kwargs):
-    PageStatistic.objects.create(page=instance, likes=instance.likes,
-                         talking_about_count=instance.talking_about_count)
+    if instance.likes_count is None:
+        return
+    if instance.talking_about_count is None:
+        return
+    else:
+        PageStatistic.objects.create(page=instance,
+                 likes_count=instance.likes_count,
+                 talking_about_count=instance.talking_about_count)
