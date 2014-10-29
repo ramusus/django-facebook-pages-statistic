@@ -39,5 +39,6 @@ class PageStatisticTest(TestCase):
         self.assertGreater(ps.updated_at, t)
 
     def test_null_stats_test(self):
-        p = PageFactory(graph_id=PAGE_FANS_ID, likes_count=None, talking_about_count=None)
-        self.assertEqual(PageStatistic.objects.count(), 0)
+        count = PageStatistic.objects.count()
+        p = PageFactory(graph_id=123456, likes_count=None, talking_about_count=None)
+        self.assertEqual(PageStatistic.objects.count(), count)
