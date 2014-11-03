@@ -1,8 +1,8 @@
 # Django Facebook Pages Statistic
 
-Extends https://github.com/ramusus/django-facebook-pages
-add likes and shares parse for FB pages
+[![Build Status](https://travis-ci.org/ramusus/django-facebook-pages-statistic.png?branch=master)](https://travis-ci.org/ramusus/django-facebook-pages-statistic) [![Coverage Status](https://coveralls.io/repos/ramusus/django-facebook-pages/badge.png?branch=master)](https://coveralls.io/r/ramusus/django-facebook-pages-statistic)
 
+Application for storing Facebook Pages statistic (likes and talking_about counters) for different timesnaps
 
 ## Installation
 
@@ -19,21 +19,25 @@ Add into `settings.py` lines:
         'facebook_pages_statistic',
     )
 
+    # oauth-tokens settings
+    OAUTH_TOKENS_HISTORY = True                                        # to keep in DB expired access tokens
+    OAUTH_TOKENS_FACEBOOK_CLIENT_ID = ''                               # application ID
+    OAUTH_TOKENS_FACEBOOK_CLIENT_SECRET = ''                           # application secret key
+    OAUTH_TOKENS_FACEBOOK_SCOPE = ['offline_access']                   # application scopes
+    OAUTH_TOKENS_FACEBOOK_USERNAME = ''                                # user login
+    OAUTH_TOKENS_FACEBOOK_PASSWORD = ''                                # user password
 
 ## Usage examples
-    After Page (https://github.com/ramusus/django-facebook-pages) created or updated
-    page = Page.remote.fetch('19292868552')
 
-    PageStatistic object will be created
-    which store likes_count, talking_about_count
-    and update time
+After Page (https://github.com/ramusus/django-facebook-pages) created or updated
+PageStatistic instance will be created which store likes_count, talking_about_count and update time
 
-    ps = PageStatistic.objects.filter(page=page).latest()
-
-    ps.likes_count
-    >>>10
-    ps.talking_about_count
-    >>>20
-    ps.updated_at
-    >>>datetime.datetime(2014, 10, 28, 15, 12, 16, 128099, tzinfo=<UTC>)
+    >>> page = Page.remote.fetch('19292868552')
+    >>> stat = page.statistics.latest()
+    >>> stat.likes_count
+    10
+    >>> stat.talking_about_count
+    20
+    >>> stat.updated_at
+    datetime.datetime(2014, 10, 28, 15, 12, 16, 128099, tzinfo=<UTC>)
 

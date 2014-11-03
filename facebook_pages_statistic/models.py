@@ -1,23 +1,17 @@
 from django.db import models
-
 from facebook_pages.models import Page
 
 
-
 class PageStatistic(models.Model):
-
-    page = models.ForeignKey(Page)
-
-    likes_count = models.PositiveIntegerField(default=0, editable=False)
-    talking_about_count = models.PositiveIntegerField(default=0, editable=False)
-    updated_at = models.DateTimeField(auto_now_add=True, editable=False)
-
-
     class Meta:
-        verbose_name = "PageStatistic"
-        verbose_name_plural = "PageStatistic"
+        verbose_name = "Facebook page statistic"
+        verbose_name_plural = "Facebook page statistics"
         get_latest_by = 'id'
 
+    page = models.ForeignKey(Page, related_name='statistics')
 
+    likes_count = models.PositiveIntegerField(editable=False)
+    talking_about_count = models.PositiveIntegerField(editable=False)
+    updated_at = models.DateTimeField(auto_now_add=True, editable=False)
 
 import signals
