@@ -29,8 +29,8 @@ Add into `settings.py` lines:
 
 ## Usage examples
 
-After Page (https://github.com/ramusus/django-facebook-pages) created or updated
-PageStatistic instance will be created which store likes_count, talking_about_count and update time
+After fetching Facebook Page from [django-facebook-pages application](https://github.com/ramusus/django-facebook-pages)
+automaticaly in background PageStatistic instance will be created which store last likes_count, talking_about_count and current update time
 
     >>> page = Page.remote.fetch('19292868552')
     >>> stat = page.statistics.latest()
