@@ -23,7 +23,6 @@ class QuickDjangoTest(object):
     """
     DIRNAME = os.path.dirname(__file__)
     INSTALLED_APPS = (
-        'email_html',
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
@@ -82,7 +81,7 @@ class QuickDjangoTest(object):
                 'HOST': '',
                 'PORT': '',
             }
-        return database
+        return {'default': database}
 
     def get_custom_settings(self):
         try:
@@ -123,7 +122,7 @@ class QuickDjangoTest(object):
         settings.configure(
             DEBUG = True,
             DATABASES = self.get_database(),
-            INSTALLED_APPS = self.INSTALLED_APPS,# + INSTALLED_APPS + self.apps,
+            INSTALLED_APPS = self.INSTALLED_APPS + INSTALLED_APPS + self.apps,
             **settings_test
         )
 
@@ -143,7 +142,7 @@ class QuickDjangoTest(object):
             DATABASES = self.get_database(),
             MIDDLEWARE_CLASSES = ('django.middleware.common.CommonMiddleware',
                                   'django.middleware.csrf.CsrfViewMiddleware'),
-            INSTALLED_APPS = self.INSTALLED_APPS,# + INSTALLED_APPS + self.apps,
+            INSTALLED_APPS = self.INSTALLED_APPS + INSTALLED_APPS + self.apps,
             **settings_test
         )
 
