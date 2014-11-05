@@ -6,7 +6,7 @@ Application for storing Facebook Pages statistic (likes and talking_about counte
 
 ## Installation
 
-    pip install facebook-pages-statistic
+    pip install django-facebook-pages-statistic
 
 Add into `settings.py` lines:
 
