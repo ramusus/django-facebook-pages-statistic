@@ -10,6 +10,6 @@ class PageStatisticFactory(factory.DjangoModelFactory):
     FACTORY_FOR = PageStatistic
 
     page = factory.SubFactory(PageFactory)
-    likes_count = random.randint(0, 10000)
-    talking_about_count = random.randint(0, 10000)
+    likes_count = factory.LazyAttribute(lambda o: random.randint(0, 10000))
+    talking_about_count = factory.LazyAttribute(lambda o: random.randint(0, 10000))
     updated_at = factory.LazyAttribute(lambda o: timezone.now())
