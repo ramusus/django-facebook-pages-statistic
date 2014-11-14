@@ -16,6 +16,9 @@ class FacebookPageStatisticTest(TestCase):
         self.assertEqual(PageStatistic.objects.count(), 0)
 
         page = PageFactory(graph_id=PAGE_FANS_ID, likes_count=10, talking_about_count=20)
+
+        self.assertEqual(PageStatistic.objects.count(), 0)
+
         facebook_api_post_fetch.send(sender=page.__class__, instance=page, created=True)
 
         self.assertEqual(PageStatistic.objects.count(), 1)
