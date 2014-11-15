@@ -36,3 +36,10 @@ class FacebookPageStatisticTest(TestCase):
         self.assertTrue(stat.likes_count > 10)
         self.assertTrue(stat.talking_about_count > 20)
         self.assertTrue(isinstance(stat.updated_at, datetime))
+
+    def test_null_stats_test(self):
+        page = PageFactory(likes_count=None, talking_about_count=None)
+        facebook_api_post_fetch.send(sender=page.__class__, instance=page, created=True)
+
+        self.assertEqual(PageStatistic.objects.count(), 0)
+

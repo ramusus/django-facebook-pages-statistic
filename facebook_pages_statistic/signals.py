@@ -6,6 +6,9 @@ from . models import PageStatistic
 
 @receiver(facebook_api_post_fetch, sender=Page)
 def page_statistic_create(sender, instance, **kwargs):
+    if instance.likes_count is None and instance.talking_about_count is None:
+        return
+
     PageStatistic.objects.create(page=instance,
          likes_count=instance.likes_count,
          talking_about_count=instance.talking_about_count)
