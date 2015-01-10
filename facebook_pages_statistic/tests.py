@@ -1,15 +1,15 @@
-from django.utils import timezone
-from django.test import TestCase
-from facebook_api.signals import facebook_api_post_fetch
-from facebook_pages.models import Page
-from facebook_pages.factories import PageFactory
-from models import PageStatistic
 from datetime import datetime
 
+from django.test import TestCase
+from django.utils import timezone
+from facebook_api.signals import facebook_api_post_fetch
+from facebook_pages.factories import PageFactory
+from facebook_pages.models import Page
+from models import PageStatistic
 PAGE_FANS_ID = 19292868552
 
 
-class FacebookPageStatisticTest(TestCase):
+class FacebookPagesStatisticTest(TestCase):
 
     def test_page_statistic_create(self):
 
@@ -42,4 +42,3 @@ class FacebookPageStatisticTest(TestCase):
         facebook_api_post_fetch.send(sender=page.__class__, instance=page, created=True)
 
         self.assertEqual(PageStatistic.objects.count(), 0)
-
