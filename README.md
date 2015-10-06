@@ -1,10 +1,12 @@
-# Django Facebook Pages Statistic
+Django Facebook Pages Statistic
+===============================
 
-[![Build Status](https://travis-ci.org/ramusus/django-facebook-pages-statistic.png?branch=master)](https://travis-ci.org/ramusus/django-facebook-pages-statistic) [![Coverage Status](https://coveralls.io/repos/ramusus/django-facebook-pages/badge.png?branch=master)](https://coveralls.io/r/ramusus/django-facebook-pages-statistic)
+[![PyPI version](https://badge.fury.io/py/django-facebook-pages-statistic.png)](http://badge.fury.io/py/django-facebook-pages-statistic) [![Build Status](https://travis-ci.org/ramusus/django-facebook-pages-statistic.png?branch=master)](https://travis-ci.org/ramusus/django-facebook-pages-statistic) [![Coverage Status](https://coveralls.io/repos/ramusus/django-facebook-pages/badge.png?branch=master)](https://coveralls.io/r/ramusus/django-facebook-pages-statistic)
 
 Application for storing Facebook Pages statistic (likes and talking_about counters) for different timesnaps
 
-## Installation
+Installation
+------------
 
     pip install django-facebook-pages-statistic
 
@@ -27,7 +29,8 @@ Add into `settings.py` lines:
     OAUTH_TOKENS_FACEBOOK_USERNAME = ''                                # user login
     OAUTH_TOKENS_FACEBOOK_PASSWORD = ''                                # user password
 
-## Usage examples
+Usage examples
+--------------
 
 After fetching Facebook Page from [django-facebook-pages application](https://github.com/ramusus/django-facebook-pages)
 automaticaly in background PageStatistic instance will be created which store last likes_count, talking_about_count and current update time
@@ -41,3 +44,8 @@ automaticaly in background PageStatistic instance will be created which store la
     >>> stat.updated_at
     datetime.datetime(2014, 10, 28, 15, 12, 16, 128099, tzinfo=<UTC>)
 
+Licensing
+---------
+
+This library uses the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+Please see the library's individual files for more information.
